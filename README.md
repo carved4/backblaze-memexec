@@ -24,27 +24,27 @@ GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -trimpath -o backblaze
 ## Usage
 
 ```bash
-# Run the default executable (test.exe) from the default bucket AFTER changing the account ID, application key, and bucket name in the code. 
+# Runs the default executable (test.exe) from the default bucket AFTER changing the account ID, application key, and bucket name in the code. 
 # also, I recommend changing the DefaultExecutable in main.go from 'test.exe' to whatever the name of your file is before building so you don't have to pass in CLI args.
-./membb
+./backblaze.exe
 
 # Run a specific executable from the default bucket
-./membb -file my_program.exe
+./backblaze.exe -file my_program.exe
 # or
-./membb my_program.exe
+./backblaze.exe my_program.exe
 
 # Run with arguments
-./membb -args "arg1,arg2,arg3"
+./backblaze.exe -args "arg1,arg2,arg3"
 
 # Run a different executable with arguments
-./membb -file other_program.exe -args "arg1,arg2,arg3"
+./backblaze.exe -file other_program.exe -args "arg1,arg2,arg3"
 # or
-./membb other_program.exe -args "arg1,arg2,arg3"
+./backblaze.exe other_program.exe -args "arg1,arg2,arg3"
 ```
 
 ## How It Works
 
-MemBB uses the [blazer](https://github.com/kurin/blazer) library to interact with Backblaze B2 API and download files. For in-memory execution, it uses [go-memexec](https://github.com/amenzhinsky/go-memexec) which allows executing binaries directly from memory without saving them to disk.
+uses the [blazer](https://github.com/kurin/blazer) library to interact with Backblaze B2 API and download files. For in-memory execution, it uses [go-memexec](https://github.com/amenzhinsky/go-memexec) which allows executing binaries directly from memory without saving them to disk.
 
 The entire process happens as follows:
 1. Connect to Backblaze B2 using hardcoded credentials
