@@ -1,10 +1,11 @@
 # Backblaze Memexec 
 
-this is a POC redteaming Go utility that downloads any executable directly from Backblaze B2 cloud storage and runs them in memory without ever saving them to disk.
+this is a POC redteaming Go utility that downloads any executable directly from Backblaze B2 cloud storage and executes them stealthily (the goal was pure in memory execution, but there are no golang packages that exist for this purpose, all involve
+writing the bytes to an executable in /temp and then invoking it.)
 
 ## Features
 - Download payloads from a corporate trusted source, if the target is using this as a backup service, it will be very hard to detect.
-- Execute payloads in memory without ever saving them to disk (especially useful if the payload you're executing is a stub of your executable created by https://github.com/carved4/gocrypter or a similar tool)
+- Execute payloads pseudo in memory (especially useful if the payload you're executing is a stub of your executable created by https://github.com/carved4/gocrypter or a similar tool)
 - Fully modular, payloads can be changed with the ease of a GUI upload to backblaze.
 - Backblaze does not require a credit card or insecure email service to sign up.
 - Bucket can be switched out easily via changing the hardcoded account ID, application key, and bucket name.
@@ -44,12 +45,12 @@ GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -trimpath -o backblaze
 
 ## How It Works
 
-uses the [blazer](https://github.com/kurin/blazer) library to interact with Backblaze B2 API and download files. For in-memory execution, it uses [go-memexec](https://github.com/amenzhinsky/go-memexec) which allows executing binaries directly from memory without saving them to disk.
+uses the [blazer](https://github.com/kurin/blazer) library to interact with Backblaze B2 API and download files. For psuedo in-memory execution, it uses [go-memexec](https://github.com/amenzhinsky/go-memexec) 
 
 The entire process happens as follows:
 1. Connect to Backblaze B2 using hardcoded credentials
 2. Download the specified executable file (or test.exe by default) into memory
-3. Use go-memexec to execute the file directly from memory
+3. Use go-memexec to execute the file
 4. Pass any specified arguments to the executed process
 
 ## Security Considerations
