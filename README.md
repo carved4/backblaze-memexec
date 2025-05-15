@@ -4,7 +4,7 @@ this is a POC redteaming Go utility that downloads any executable directly from 
 
 ## Features
 - Download payloads from a corporate trusted source, if the target is using this as a backup service, it will be very hard to detect.
-- Execute payloads in memory without ever saving them to disk (especially useful if the payload you're executing is a stub of your executablecreated by https://github.com/carved4/gocrypter or a similar tool)
+- Execute payloads in memory without ever saving them to disk (especially useful if the payload you're executing is a stub of your executable created by https://github.com/carved4/gocrypter or a similar tool)
 - Fully modular, payloads can be changed with the ease of a GUI upload to backblaze.
 - Backblaze does not require a credit card or insecure email service to sign up.
 - Bucket can be switched out easily via changing the hardcoded account ID, application key, and bucket name.
