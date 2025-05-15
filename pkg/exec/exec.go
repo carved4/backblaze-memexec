@@ -13,9 +13,9 @@ import (
 
 
 const (
-	AccountID       = "0057825b98499560000000003"
-	ApplicationKey  = "K005uiYEpOPTirXAEF8zpxwL1uCJh0g"
-	DefaultBucket   = "pulldown"
+	AccountID       = "// your account id //"
+	ApplicationKey  = "// your application key //"
+	DefaultBucket   = "// your bucket name //"
 )
 
 
